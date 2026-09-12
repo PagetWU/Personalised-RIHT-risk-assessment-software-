@@ -1,0 +1,764 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RIHT Demo Report</title>
+<style>
+body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 0; color: #1f2937; background: #f5f7fb; }
+.page { max-width: 1180px; margin: 0 auto; padding: 26px 28px 48px; }
+.hero { background: #111827; color: white; padding: 24px 26px; border-radius: 10px; }
+h1 { font-size: 24px; margin: 0 0 8px; letter-spacing: 0; }
+h2 { font-size: 17px; margin: 28px 0 10px; }
+h3 { font-size: 14px; margin: 0 0 8px; color: #374151; }
+.subtle { color: #d1d5db; line-height: 1.45; max-width: 900px; }
+.grid { display: grid; grid-template-columns: 1.05fr 1.05fr 1.42fr 1.1fr 0.8fr 0.8fr 0.8fr; gap: 6px; margin-top: 18px; align-items: stretch; }
+.card { background: white; color: #111827; border-radius: 8px; padding: 10px 12px; min-height: 70px; min-width: 0; overflow: hidden; }
+.card span, .mini-card span { display: block; color: #6b7280; font-size: 12px; margin-bottom: 6px; }
+.card b { font-size: 20px; line-height: 1.1; white-space: nowrap; }
+.section { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 20px; margin-top: 18px; }
+.section p { line-height: 1.5; margin: 7px 0; }
+.mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); gap: 8px; margin: 8px 0 14px; }
+.mini-card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 10px; background: #fafafa; min-width: 0; }
+.mini-card b { font-size: 16px; white-space: nowrap; }
+.table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 8px; }
+table.data-table { border-collapse: collapse; width: 100%; font-size: 12px; background: white; }
+table.data-table th, table.data-table td { border-bottom: 1px solid #e5e7eb; padding: 7px 9px; text-align: right; vertical-align: top; }
+table.data-table th:first-child, table.data-table td:first-child { text-align: left; }
+table.data-table th { background: #f3f4f6; color: #374151; font-weight: 700; }
+table.data-table tr:last-child td { border-bottom: 0; }
+.risk-panel { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 16px; align-items: start; }
+details { margin-top: 8px; }
+summary { cursor: pointer; font-weight: 700; color: #374151; }
+pre { background: #111827; color: #e5e7eb; padding: 14px; border-radius: 8px; overflow: auto; font-size: 12px; }
+img { max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; }
+code { background: #eef2ff; padding: 1px 4px; border-radius: 4px; }
+@media (max-width: 980px) {
+  .grid, .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card b { white-space: normal; }
+  .risk-panel { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="hero">
+<h1>RIHT Single-Patient Demo Report</h1>
+<div class="grid">
+  <div class="card"><span>Auto segmentation</span><b>No</b></div>
+  <div class="card"><span>Input format</span><b>mha</b></div>
+  <div class="card"><span>Phenotype</span><b>persistent-low</b></div>
+  <div class="card"><span>Risk group</span><b>low-risk</b></div>
+  <div class="card"><span>Risk 3y</span><b>0.070</b></div>
+  <div class="card"><span>Risk 7y</span><b>0.295</b></div>
+  <div class="card"><span>Risk all</span><b>0.441</b></div>
+</div>
+</div>
+
+<div class="section">
+<h2>DVH Summary</h2>
+<div class='mini-grid'><div class='mini-card'><span>Age</span><b>55 y</b></div><div class='mini-card'><span>Gender</span><b>Unknown</b></div><div class='mini-card'><span>Dmean</span><b>59.58 Gy</b></div><div class='mini-card'><span>Volume</span><b>20.02 cc</b></div><div class='mini-card'><span>Dmax</span><b>66.65 Gy</b></div><div class='mini-card'><span>V30</span><b>100.0%</b></div><div class='mini-card'><span>V40</span><b>100.0%</b></div><div class='mini-card'><span>V50</span><b>99.6%</b></div></div>
+<details>
+<summary>Show full DVH table</summary>
+<div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Thyroid Dmean (Gy)</td>
+      <td>59.5777</td>
+    </tr>
+    <tr>
+      <td>Thyroid volume (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid Dmax (Gy)</td>
+      <td>66.6474</td>
+    </tr>
+    <tr>
+      <td>Thyroid Dmin (Gy)</td>
+      <td>48.0882</td>
+    </tr>
+    <tr>
+      <td>Thyroid D2 (Gy)</td>
+      <td>65.7673</td>
+    </tr>
+    <tr>
+      <td>Thyroid D50 (Gy)</td>
+      <td>58.6166</td>
+    </tr>
+    <tr>
+      <td>Thyroid D95 (Gy)</td>
+      <td>53.6422</td>
+    </tr>
+    <tr>
+      <td>Thyroid V5 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V5 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS5 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V10 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V10 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS10 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V15 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V15 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS15 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V20 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V20 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS20 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V25 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V25 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS25 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V30 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V30 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS30 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V35 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V35 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS35 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V40 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V40 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS40 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V45 (%)</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V45 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS45 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V50 (%)</td>
+      <td>99.6369</td>
+    </tr>
+    <tr>
+      <td>Thyroid V50 (cc)</td>
+      <td>19.9424</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS50 (cc)</td>
+      <td>0.0727</td>
+    </tr>
+    <tr>
+      <td>Thyroid V55 (%)</td>
+      <td>91.7185</td>
+    </tr>
+    <tr>
+      <td>Thyroid V55 (cc)</td>
+      <td>18.3576</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS55 (cc)</td>
+      <td>1.6575</td>
+    </tr>
+    <tr>
+      <td>Thyroid V60 (%)</td>
+      <td>32.2614</td>
+    </tr>
+    <tr>
+      <td>Thyroid V60 (cc)</td>
+      <td>6.4572</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS60 (cc)</td>
+      <td>13.5580</td>
+    </tr>
+    <tr>
+      <td>Thyroid V65 (%)</td>
+      <td>10.9267</td>
+    </tr>
+    <tr>
+      <td>Thyroid V65 (cc)</td>
+      <td>2.1870</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS65 (cc)</td>
+      <td>17.8281</td>
+    </tr>
+    <tr>
+      <td>Thyroid V70 (%)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid V70 (cc)</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid VS70 (cc)</td>
+      <td>20.0151</td>
+    </tr>
+    <tr>
+      <td>Thyroid V30-60 (%)</td>
+      <td>67.7386</td>
+    </tr>
+    <tr>
+      <td>Thyroid V30-60 (cc)</td>
+      <td>13.5580</td>
+    </tr>
+  </tbody>
+</table></div>
+</details>
+</div>
+
+<div class="section">
+<h2>Risk Curve</h2>
+<div class="risk-panel">
+  <div>
+<svg class="risk-svg" viewBox="0 0 760 250" role="img" aria-label="Predicted cumulative RIHT risk curve">
+  <style>
+    .risk-svg text { font: 12px Arial, sans-serif; fill: #4b5563; }
+    .risk-svg .grid { stroke: #e5e7eb; stroke-width: 1; }
+    .risk-svg .axis { stroke: #374151; stroke-width: 1.2; }
+    .risk-svg polyline { fill: none; stroke: #2563eb; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .risk-svg circle { fill: #2563eb; stroke: white; stroke-width: 1.4; }
+  </style>
+  <line x1='54.0' y1='18' x2='54.0' y2='208' class='grid'/><text x='54.0' y='234' text-anchor='middle'>1y</text><line x1='140.0' y1='18' x2='140.0' y2='208' class='grid'/><text x='140.0' y='234' text-anchor='middle'>2y</text><line x1='226.0' y1='18' x2='226.0' y2='208' class='grid'/><text x='226.0' y='234' text-anchor='middle'>3y</text><line x1='312.0' y1='18' x2='312.0' y2='208' class='grid'/><text x='312.0' y='234' text-anchor='middle'>4y</text><line x1='398.0' y1='18' x2='398.0' y2='208' class='grid'/><text x='398.0' y='234' text-anchor='middle'>5y</text><line x1='484.0' y1='18' x2='484.0' y2='208' class='grid'/><text x='484.0' y='234' text-anchor='middle'>6y</text><line x1='570.0' y1='18' x2='570.0' y2='208' class='grid'/><text x='570.0' y='234' text-anchor='middle'>7y</text><line x1='656.0' y1='18' x2='656.0' y2='208' class='grid'/><text x='656.0' y='234' text-anchor='middle'>8y</text><line x1='742.0' y1='18' x2='742.0' y2='208' class='grid'/><text x='742.0' y='234' text-anchor='middle'>9y</text>
+  <line x1='54' y1='208.0' x2='742' y2='208.0' class='grid'/><text x='44' y='212.0' text-anchor='end'>0%</text><line x1='54' y1='160.5' x2='742' y2='160.5' class='grid'/><text x='44' y='164.5' text-anchor='end'>25%</text><line x1='54' y1='113.0' x2='742' y2='113.0' class='grid'/><text x='44' y='117.0' text-anchor='end'>50%</text><line x1='54' y1='65.5' x2='742' y2='65.5' class='grid'/><text x='44' y='69.5' text-anchor='end'>75%</text><line x1='54' y1='18.0' x2='742' y2='18.0' class='grid'/><text x='44' y='22.0' text-anchor='end'>100%</text>
+  <line x1="54" y1="208" x2="742" y2="208" class="axis"/>
+  <line x1="54" y1="18" x2="54" y2="208" class="axis"/>
+  <polyline points="54.0,205.7 140.0,201.2 226.0,194.7 312.0,191.0 398.0,180.7 484.0,171.0 570.0,152.0 656.0,139.6 742.0,124.2"/>
+  <circle cx='54.0' cy='205.7' r='4'><title>1y risk 0.012</title></circle><circle cx='140.0' cy='201.2' r='4'><title>2y risk 0.036</title></circle><circle cx='226.0' cy='194.7' r='4'><title>3y risk 0.070</title></circle><circle cx='312.0' cy='191.0' r='4'><title>4y risk 0.090</title></circle><circle cx='398.0' cy='180.7' r='4'><title>5y risk 0.144</title></circle><circle cx='484.0' cy='171.0' r='4'><title>6y risk 0.195</title></circle><circle cx='570.0' cy='152.0' r='4'><title>7y risk 0.295</title></circle><circle cx='656.0' cy='139.6' r='4'><title>8y risk 0.360</title></circle><circle cx='742.0' cy='124.2' r='4'><title>9y risk 0.441</title></circle>
+</svg>
+</div>
+  <div><div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>horizon</th>
+      <th>years</th>
+      <th>risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1y</td>
+      <td>1.0</td>
+      <td>0.0121</td>
+    </tr>
+    <tr>
+      <td>2y</td>
+      <td>2.0</td>
+      <td>0.0357</td>
+    </tr>
+    <tr>
+      <td>3y</td>
+      <td>3.0</td>
+      <td>0.0697</td>
+    </tr>
+    <tr>
+      <td>4y</td>
+      <td>4.0</td>
+      <td>0.0896</td>
+    </tr>
+    <tr>
+      <td>5y</td>
+      <td>5.0</td>
+      <td>0.1439</td>
+    </tr>
+    <tr>
+      <td>6y</td>
+      <td>6.0</td>
+      <td>0.1945</td>
+    </tr>
+    <tr>
+      <td>7y</td>
+      <td>7.0</td>
+      <td>0.2950</td>
+    </tr>
+    <tr>
+      <td>8y</td>
+      <td>8.0</td>
+      <td>0.3602</td>
+    </tr>
+    <tr>
+      <td>9y</td>
+      <td>9.0</td>
+      <td>0.4409</td>
+    </tr>
+    <tr>
+      <td>all</td>
+      <td>all</td>
+      <td>0.4409</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>Thyroid Neighborhood</h2>
+<p>Yellow=thyroid, red=target, white=thyroid dose &gt;=40 Gy.</p>
+<div class="mini-grid">
+  <div class="mini-card"><span>CT display</span><b>WL 50 / WW 400</b></div>
+  <div class="mini-card"><span>Dose display</span><b>0-70 Gy</b></div>
+  <div class="mini-card"><span>Hotspot line</span><b>40 Gy</b></div>
+</div>
+<p><b>Thyroid volume:</b> 20.02 cc &nbsp; <b>Thyroid Dmean:</b> 59.58 Gy</p>
+<img src="thyroid_zoom.png">
+</div>
+
+<div class="section">
+<h2>Thyroid-Sparing Optimizability</h2>
+<div class='mini-grid'><div class='mini-card'><span>Class</span><b>optimizable</b></div><div class='mini-card'><span>Target masks</span><b>1</b></div><div class='mini-card'><span>Overlap</span><b>0.00 cc</b></div><div class='mini-card'><span>Overlap %</span><b>0.0%</b></div><div class='mini-card'><span>Thyroid-target distance</span><b>3.2 mm</b></div><div class='mini-card'><span>Hotspot-target distance</span><b>3.2 mm</b></div></div>
+<details>
+<summary>Show full target adjacency metrics</summary>
+<div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>target_available</th>
+      <th>target_mask_count</th>
+      <th>target_mask_names</th>
+      <th>hotspot_threshold_cgy</th>
+      <th>thyroid_volume_cc</th>
+      <th>thyroid_dmean_gy</th>
+      <th>thyroid_dmax_gy</th>
+      <th>hotspot_volume_cc</th>
+      <th>hotspot_fraction_of_thyroid_pct</th>
+      <th>thyroid_to_target_min_distance_mm</th>
+      <th>hotspot_to_target_min_distance_mm</th>
+      <th>thyroid_target_overlap_cc</th>
+      <th>thyroid_target_overlap_pct_of_thyroid</th>
+      <th>shell_0_3mm_mean_cgy</th>
+      <th>shell_0_3mm_max_cgy</th>
+      <th>shell_0_3mm_voxels</th>
+      <th>shell_3_6mm_mean_cgy</th>
+      <th>shell_3_6mm_max_cgy</th>
+      <th>shell_3_6mm_voxels</th>
+      <th>shell_6_10mm_mean_cgy</th>
+      <th>shell_6_10mm_max_cgy</th>
+      <th>shell_6_10mm_voxels</th>
+      <th>shell_10_20mm_mean_cgy</th>
+      <th>shell_10_20mm_max_cgy</th>
+      <th>shell_10_20mm_voxels</th>
+      <th>optimizable_class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0000</td>
+      <td>1.0000</td>
+      <td>PTV_70Gy_mask.mha</td>
+      <td>4000.0000</td>
+      <td>20.0151</td>
+      <td>59.5777</td>
+      <td>66.6474</td>
+      <td>20.0151</td>
+      <td>100.0000</td>
+      <td>3.1865</td>
+      <td>3.1865</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>5885.5112</td>
+      <td>6877.2080</td>
+      <td>4494.0000</td>
+      <td>5781.4829</td>
+      <td>7335.6621</td>
+      <td>9154.0000</td>
+      <td>5444.3530</td>
+      <td>7392.4019</td>
+      <td>16924.0000</td>
+      <td>4276.4111</td>
+      <td>7428.2671</td>
+      <td>61112.0000</td>
+      <td>limited_optimizable_near_target</td>
+    </tr>
+  </tbody>
+</table></div>
+</details>
+</div>
+
+<div class="section">
+<h2>Risk Reduction Under Hypothetical Thyroid-Sparing Dose Optimization</h2>
+
+<svg class="cf-svg" viewBox="0 0 820 320" role="img" aria-label="Counterfactual risk curves">
+  <style>
+    .cf-svg text { font: 12px Arial, sans-serif; fill: #4b5563; }
+    .cf-svg .grid { stroke: #e5e7eb; stroke-width: 1; }
+    .cf-svg .axis { stroke: #374151; stroke-width: 1.2; }
+    .cf-svg polyline { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  </style>
+  <line x1='58.0' y1='20' x2='58.0' y2='278' class='grid'/><text x='58.0' y='304' text-anchor='middle'>1y</text><line x1='129.5' y1='20' x2='129.5' y2='278' class='grid'/><text x='129.5' y='304' text-anchor='middle'>2y</text><line x1='201.0' y1='20' x2='201.0' y2='278' class='grid'/><text x='201.0' y='304' text-anchor='middle'>3y</text><line x1='272.5' y1='20' x2='272.5' y2='278' class='grid'/><text x='272.5' y='304' text-anchor='middle'>4y</text><line x1='344.0' y1='20' x2='344.0' y2='278' class='grid'/><text x='344.0' y='304' text-anchor='middle'>5y</text><line x1='415.5' y1='20' x2='415.5' y2='278' class='grid'/><text x='415.5' y='304' text-anchor='middle'>6y</text><line x1='487.0' y1='20' x2='487.0' y2='278' class='grid'/><text x='487.0' y='304' text-anchor='middle'>7y</text><line x1='558.5' y1='20' x2='558.5' y2='278' class='grid'/><text x='558.5' y='304' text-anchor='middle'>8y</text><line x1='630.0' y1='20' x2='630.0' y2='278' class='grid'/><text x='630.0' y='304' text-anchor='middle'>9y</text><line x1='58' y1='278.0' x2='630' y2='278.0' class='grid'/><text x='48' y='282.0' text-anchor='end'>0%</text><line x1='58' y1='213.5' x2='630' y2='213.5' class='grid'/><text x='48' y='217.5' text-anchor='end'>25%</text><line x1='58' y1='149.0' x2='630' y2='149.0' class='grid'/><text x='48' y='153.0' text-anchor='end'>50%</text><line x1='58' y1='84.5' x2='630' y2='84.5' class='grid'/><text x='48' y='88.5' text-anchor='end'>75%</text><line x1='58' y1='20.0' x2='630' y2='20.0' class='grid'/><text x='48' y='24.0' text-anchor='end'>100%</text>
+  <line x1="58" y1="278" x2="630" y2="278" class="axis"/>
+  <line x1="58" y1="20" x2="58" y2="278" class="axis"/>
+  <polyline points='58.0,274.9 129.5,268.8 201.0,260.0 272.5,254.9 344.0,240.9 415.5,227.8 487.0,201.9 558.5,185.1 630.0,164.3' style='stroke:#111827'><title>Baseline</title></polyline><polyline points='58.0,275.3 129.5,270.1 201.0,262.4 272.5,258.0 344.0,245.7 415.5,234.2 487.0,211.0 558.5,195.7 630.0,176.4' style='stroke:#2563eb'><title>Whole dose map x0.90</title></polyline><polyline points='58.0,275.7 129.5,271.1 201.0,264.5 272.5,260.7 344.0,250.0 415.5,239.8 487.0,219.1 558.5,205.3 630.0,187.7' style='stroke:#16a34a'><title>Whole dose map x0.80</title></polyline><polyline points='58.0,275.6 129.5,271.0 201.0,264.3 272.5,260.3 344.0,249.4 415.5,239.1 487.0,218.1 558.5,204.1 630.0,186.3' style='stroke:#dc2626'><title>Thyroid voxels &gt;40 Gy x0.80</title></polyline><polyline points='58.0,275.4 129.5,270.3 201.0,263.0 272.5,258.7 344.0,246.8 415.5,235.6 487.0,213.0 558.5,198.1 630.0,179.2' style='stroke:#9333ea'><title>Soft &gt;40 Gy cap x0.80, tau=2 Gy, Gaussian 3 mm</title></polyline>
+  <line x1='652' y1='38' x2='674' y2='38' style='stroke:#111827;stroke-width:3'/><text x='680' y='42'>Baseline</text><line x1='652' y1='60' x2='674' y2='60' style='stroke:#2563eb;stroke-width:3'/><text x='680' y='64'>Whole dose map x0.90</text><line x1='652' y1='82' x2='674' y2='82' style='stroke:#16a34a;stroke-width:3'/><text x='680' y='86'>Whole dose map x0.80</text><line x1='652' y1='104' x2='674' y2='104' style='stroke:#dc2626;stroke-width:3'/><text x='680' y='108'>Thyroid voxels &gt;40 Gy x0.80</text><line x1='652' y1='126' x2='674' y2='126' style='stroke:#9333ea;stroke-width:3'/><text x='680' y='130'>Soft &gt;40 Gy cap x0.80, tau=2 Gy, Gau</text>
+</svg>
+
+
+<svg class="reduction-svg" viewBox="0 0 860 328" role="img" aria-label="Absolute RIHT risk reduction under hypothetical thyroid-sparing dose scenarios">
+  <style>
+    .reduction-svg text { font: 12px Arial, sans-serif; fill: #374151; }
+    .reduction-svg .title { font: 14px Arial, sans-serif; font-weight: 700; fill: #111827; }
+    .reduction-svg .grid { stroke: #e5e7eb; stroke-width: 1; }
+    .reduction-svg .axis { stroke: #374151; stroke-width: 1.2; }
+  </style>
+  <text x="285" y="20" class="title">Predicted RIHT risk reduction (percentage points)</text>
+  <text x="285" y="57">Higher values indicate larger absolute risk reduction</text>
+  <rect x='285' y='29' width='12' height='12' fill='#2563eb'/><text x='303' y='39'>3y</text><rect x='367' y='29' width='12' height='12' fill='#16a34a'/><text x='385' y='39'>7y</text><rect x='449' y='29' width='12' height='12' fill='#dc2626'/><text x='467' y='39'>all</text>
+  <line x1='285.0' y1='66' x2='285.0' y2='292' class='grid'/><text x='285.0' y='318' text-anchor='middle'>0</text><line x1='384.0' y1='66' x2='384.0' y2='292' class='grid'/><text x='384.0' y='318' text-anchor='middle'>2</text><line x1='483.0' y1='66' x2='483.0' y2='292' class='grid'/><text x='483.0' y='318' text-anchor='middle'>4</text><line x1='582.0' y1='66' x2='582.0' y2='292' class='grid'/><text x='582.0' y='318' text-anchor='middle'>6</text><line x1='681.0' y1='66' x2='681.0' y2='292' class='grid'/><text x='681.0' y='318' text-anchor='middle'>8</text><line x1='780.0' y1='66' x2='780.0' y2='292' class='grid'/><text x='780.0' y='318' text-anchor='middle'>10</text>
+  <line x1="285" y1="66" x2="285" y2="292" class="axis"/>
+  <line x1="285" y1="292" x2="780" y2="292" class="axis"/>
+  <text x='273' y='99' text-anchor='end'>Whole dose map x0.90</text><rect x='285' y='81' width='46.6' height='10' rx='2' fill='#2563eb'/><text x='337.6' y='90'>0.9 pp</text><rect x='285' y='95' width='174.1' height='10' rx='2' fill='#16a34a'/><text x='465.1' y='104'>3.5 pp</text><rect x='285' y='109' width='233.5' height='10' rx='2' fill='#dc2626'/><text x='524.5' y='118'>4.7 pp</text><text x='273' y='153' text-anchor='end'>Whole dose map x0.80</text><rect x='285' y='135' width='87.1' height='10' rx='2' fill='#2563eb'/><text x='378.1' y='144'>1.8 pp</text><rect x='285' y='149' width='331.0' height='10' rx='2' fill='#16a34a'/><text x='622.0' y='158'>6.7 pp</text><rect x='285' y='163' width='450.2' height='10' rx='2' fill='#dc2626'/><text x='741.2' y='172'>9.1 pp</text><text x='273' y='207' text-anchor='end'>Thyroid voxels &gt;40 Gy x0.80</text><rect x='285' y='189' width='82.0' height='10' rx='2' fill='#2563eb'/><text x='373.0' y='198'>1.7 pp</text><rect x='285' y='203' width='310.9' height='10' rx='2' fill='#16a34a'/><text x='601.9' y='212'>6.3 pp</text><rect x='285' y='217' width='422.0' height='10' rx='2' fill='#dc2626'/><text x='713.0' y='226'>8.5 pp</text><text x='273' y='261' text-anchor='end'>Soft &gt;40 Gy cap x0.80, tau=2 Gy, Gaussian 3 mm</text><rect x='285' y='243' width='56.9' height='10' rx='2' fill='#2563eb'/><text x='347.9' y='252'>1.1 pp</text><rect x='285' y='257' width='213.4' height='10' rx='2' fill='#16a34a'/><text x='504.4' y='266'>4.3 pp</text><rect x='285' y='271' width='287.2' height='10' rx='2' fill='#dc2626'/><text x='578.2' y='280'>5.8 pp</text>
+</svg>
+
+<div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario</th>
+      <th>base 3y</th>
+      <th>cf 3y</th>
+      <th>delta 3y</th>
+      <th>3y reduction pp</th>
+      <th>base 7y</th>
+      <th>cf 7y</th>
+      <th>delta 7y</th>
+      <th>7y reduction pp</th>
+      <th>base all</th>
+      <th>cf all</th>
+      <th>delta all</th>
+      <th>all reduction pp</th>
+      <th>Dmean change %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Whole dose map x0.90</td>
+      <td>0.0697</td>
+      <td>0.0603</td>
+      <td>-0.0094</td>
+      <td>0.9417</td>
+      <td>0.2950</td>
+      <td>0.2598</td>
+      <td>-0.0352</td>
+      <td>3.5181</td>
+      <td>0.4409</td>
+      <td>0.3937</td>
+      <td>-0.0472</td>
+      <td>4.7170</td>
+      <td>-10.0000</td>
+    </tr>
+    <tr>
+      <td>Whole dose map x0.80</td>
+      <td>0.0697</td>
+      <td>0.0521</td>
+      <td>-0.0176</td>
+      <td>1.7597</td>
+      <td>0.2950</td>
+      <td>0.2281</td>
+      <td>-0.0669</td>
+      <td>6.6862</td>
+      <td>0.4409</td>
+      <td>0.3499</td>
+      <td>-0.0909</td>
+      <td>9.0942</td>
+      <td>-20.0000</td>
+    </tr>
+    <tr>
+      <td>Thyroid voxels >40 Gy x0.80</td>
+      <td>0.0697</td>
+      <td>0.0532</td>
+      <td>-0.0166</td>
+      <td>1.6563</td>
+      <td>0.2950</td>
+      <td>0.2322</td>
+      <td>-0.0628</td>
+      <td>6.2799</td>
+      <td>0.4409</td>
+      <td>0.3556</td>
+      <td>-0.0853</td>
+      <td>8.5261</td>
+      <td>-20.0000</td>
+    </tr>
+    <tr>
+      <td>Soft >40 Gy cap x0.80, tau=2 Gy, Gaussian 3 mm</td>
+      <td>0.0697</td>
+      <td>0.0583</td>
+      <td>-0.0115</td>
+      <td>1.1492</td>
+      <td>0.2950</td>
+      <td>0.2519</td>
+      <td>-0.0431</td>
+      <td>4.3120</td>
+      <td>0.4409</td>
+      <td>0.3828</td>
+      <td>-0.0580</td>
+      <td>5.8024</td>
+      <td>-13.2856</td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="section">
+<h2>Model Features</h2>
+<div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>feature</th>
+      <th>raw_value</th>
+      <th>scaled_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>radiomics_log-sigma-3-mm-3D_glrlm_GrayLevelNonUniformity</td>
+      <td>361.5816</td>
+      <td>0.2053</td>
+    </tr>
+    <tr>
+      <td>radiomics_original_gldm_GrayLevelNonUniformity</td>
+      <td>765.7462</td>
+      <td>0.0783</td>
+    </tr>
+    <tr>
+      <td>radiomics_wavelet-LHL_ngtdm_Strength</td>
+      <td>0.7826</td>
+      <td>0.1368</td>
+    </tr>
+    <tr>
+      <td>dosiomics_original_shape_MeshVolume</td>
+      <td>19849.7359</td>
+      <td>0.2332</td>
+    </tr>
+    <tr>
+      <td>dosiomics_wavelet-HLH_gldm_GrayLevelNonUniformity</td>
+      <td>2009.1376</td>
+      <td>0.4453</td>
+    </tr>
+    <tr>
+      <td>dosiomics_wavelet-LLH_gldm_GrayLevelNonUniformity</td>
+      <td>469.0204</td>
+      <td>0.2719</td>
+    </tr>
+    <tr>
+      <td>dosiomics_wavelet-HLL_ngtdm_Coarseness</td>
+      <td>0.0018</td>
+      <td>0.0165</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>55.0000</td>
+      <td>0.5331</td>
+    </tr>
+    <tr>
+      <td>N-stage</td>
+      <td>2.0000</td>
+      <td>0.6667</td>
+    </tr>
+    <tr>
+      <td>Thyroid Dmean (Gy)</td>
+      <td>59.5777</td>
+      <td>0.8167</td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="section">
+<h2>Published Model Reproduction</h2>
+<p>One row per published formula or boundary rule implemented from the Table S2 reproduction code. The risk column shows the patient-level call; <code>fail</code> means the required inputs are unavailable.</p>
+<div class='table-wrap'><table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>value</th>
+      <th>risk_call</th>
+      <th>paper</th>
+      <th>formula</th>
+      <th>note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NTCP_Boomsma2012</td>
+      <td>0.476</td>
+      <td>low-risk</td>
+      <td>Boomsma et al. 2012</td>
+      <td>sigmoid(0.011 + 0.062*DmeanGy - 0.19*VolumeCc)</td>
+      <td>Probability-style NTCP model using Dmean and thyroid volume.</td>
+    </tr>
+    <tr>
+      <td>NTCP_Ronjom2013</td>
+      <td>0.484</td>
+      <td>low-risk</td>
+      <td>Ronjom et al. 2013</td>
+      <td>sigmoid(-1.235 + 0.1162*DmeanGy - 0.2873*VolumeCc)</td>
+      <td>Probability-style NTCP model using Dmean and thyroid volume.</td>
+    </tr>
+    <tr>
+      <td>Bakhshandeh2013_Zhai2022_Dmean_ge45</td>
+      <td>59.578</td>
+      <td>high-risk</td>
+      <td>Bakhshandeh et al. 2013; Zhai et al. 2022</td>
+      <td>Thyroid Dmean (Gy) >= 45</td>
+      <td>Dose-volume rule: mean thyroid dose >=45 Gy indicates elevated risk.</td>
+    </tr>
+    <tr>
+      <td>Sachdev2014_V50_ge60pct</td>
+      <td>99.637</td>
+      <td>high-risk</td>
+      <td>Sachdev et al. 2014</td>
+      <td>Thyroid V50 (%) >= 60</td>
+      <td>Dose-volume rule: V50 >=60% has been reported as an elevated-risk threshold.</td>
+    </tr>
+    <tr>
+      <td>Zhai2022_V40_gt80pct</td>
+      <td>100.000</td>
+      <td>high-risk</td>
+      <td>Zhai et al. 2022</td>
+      <td>Thyroid V40 (%) > 80</td>
+      <td>Planning-style rule: V40 >80% flags elevated thyroid dose burden.</td>
+    </tr>
+    <tr>
+      <td>Lee2016_Zhai2022_VS45_lt5cc</td>
+      <td>0.000</td>
+      <td>high-risk</td>
+      <td>Lee et al. 2016; Zhai et al. 2022</td>
+      <td>Thyroid VS45 (cc) < 5</td>
+      <td>Sparing-volume rule: VS45 <5 cc indicates inadequate thyroid sparing.</td>
+    </tr>
+    <tr>
+      <td>Lee2016_Lertbutsayanukul2018_VS60_lt10cc</td>
+      <td>13.558</td>
+      <td>low-risk</td>
+      <td>Lee et al. 2016; Lertbutsayanukul et al. 2018</td>
+      <td>Thyroid VS60 (cc) < 10</td>
+      <td>Sparing-volume rule: VS60 <10 cc indicates inadequate high-dose sparing.</td>
+    </tr>
+    <tr>
+      <td>Chow2022_VS60_lt10cc</td>
+      <td>13.558</td>
+      <td>low-risk</td>
+      <td>Chow et al. 2022</td>
+      <td>Thyroid VS60 (cc) < 10</td>
+      <td>Table S2 boundary implementation: high risk if thyroid sparing volume receiving <60 Gy is <10 cc.</td>
+    </tr>
+    <tr>
+      <td>Xu2023_V40_gt85_binary</td>
+      <td>100.000</td>
+      <td>high-risk</td>
+      <td>Xu et al. 2023</td>
+      <td>Thyroid V40 (%) > 85</td>
+      <td>Table S2 boundary implementation: high risk if V40 >85%; V40 <=85% corresponds to the protected constraint group.</td>
+    </tr>
+    <tr>
+      <td>Zhou2020_V50_gt24_binary</td>
+      <td>99.637</td>
+      <td>high-risk</td>
+      <td>Zhou et al. 2020</td>
+      <td>Thyroid V50 (%) > 24</td>
+      <td>Table S2 boundary implementation: high risk if thyroid V50 >24%.</td>
+    </tr>
+    <tr>
+      <td>Zhou2020_Nstage_TV12p82_V50_ordinal</td>
+      <td>2.000</td>
+      <td>high-risk</td>
+      <td>Zhou et al. 2020</td>
+      <td>I(N-stage>1) + I(Volume<=12.82cc) + I(V50>24%)</td>
+      <td>Table S2 ordinal implementation from the published clinical-DVH risk factors.</td>
+    </tr>
+    <tr>
+      <td>Peng2020_TV20_V30_60_80_ordinal</td>
+      <td>0.000</td>
+      <td>low-risk</td>
+      <td>Peng et al. 2020</td>
+      <td>if Volume>20cc: score 0; else if V30-60<=80%: score 1; else score 2</td>
+      <td>Peng2020 stratum: thyroid volume >20 cc.</td>
+    </tr>
+    <tr>
+      <td>Peng2020_TV_le20_binary</td>
+      <td>0.000</td>
+      <td>low-risk</td>
+      <td>Peng et al. 2020</td>
+      <td>High risk = thyroid volume <=20 cc</td>
+      <td>Table S2 boundary sensitivity using thyroid volume alone.</td>
+    </tr>
+    <tr>
+      <td>Peng2020_TVle20_V30_60gt80_binary</td>
+      <td>0.000</td>
+      <td>low-risk</td>
+      <td>Peng et al. 2020</td>
+      <td>High risk = thyroid volume <=20 cc and V30-60 >80%</td>
+      <td>Table S2 highest-risk boundary sensitivity.</td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+</div>
+</body>
+</html>

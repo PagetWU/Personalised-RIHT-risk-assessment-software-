@@ -1,0 +1,15 @@
+﻿model,value,risk_call,paper,formula,note
+NTCP_Boomsma2012,0.4755062883736156,low-risk,Boomsma et al. 2012,sigmoid(0.011 + 0.062*DmeanGy - 0.19*VolumeCc),Probability-style NTCP model using Dmean and thyroid volume.
+NTCP_Ronjom2013,0.48440214628973216,low-risk,Ronjom et al. 2013,sigmoid(-1.235 + 0.1162*DmeanGy - 0.2873*VolumeCc),Probability-style NTCP model using Dmean and thyroid volume.
+Bakhshandeh2013_Zhai2022_Dmean_ge45,59.5777197265625,high-risk,Bakhshandeh et al. 2013; Zhai et al. 2022,Thyroid Dmean (Gy) >= 45,Dose-volume rule: mean thyroid dose >=45 Gy indicates elevated risk.
+Sachdev2014_V50_ge60pct,99.63692946058092,high-risk,Sachdev et al. 2014,Thyroid V50 (%) >= 60,Dose-volume rule: V50 >=60% has been reported as an elevated-risk threshold.
+Zhai2022_V40_gt80pct,100.0,high-risk,Zhai et al. 2022,Thyroid V40 (%) > 80,Planning-style rule: V40 >80% flags elevated thyroid dose burden.
+Lee2016_Zhai2022_VS45_lt5cc,0.0,high-risk,Lee et al. 2016; Zhai et al. 2022,Thyroid VS45 (cc) < 5,Sparing-volume rule: VS45 <5 cc indicates inadequate thyroid sparing.
+Lee2016_Lertbutsayanukul2018_VS60_lt10cc,13.557956904000001,low-risk,Lee et al. 2016; Lertbutsayanukul et al. 2018,Thyroid VS60 (cc) < 10,Sparing-volume rule: VS60 <10 cc indicates inadequate high-dose sparing.
+Chow2022_VS60_lt10cc,13.557956904000001,low-risk,Chow et al. 2022,Thyroid VS60 (cc) < 10,Table S2 boundary implementation: high risk if thyroid sparing volume receiving <60 Gy is <10 cc.
+Xu2023_V40_gt85_binary,100.0,high-risk,Xu et al. 2023,Thyroid V40 (%) > 85,Table S2 boundary implementation: high risk if V40 >85%; V40 <=85% corresponds to the protected constraint group.
+Zhou2020_V50_gt24_binary,99.63692946058092,high-risk,Zhou et al. 2020,Thyroid V50 (%) > 24,Table S2 boundary implementation: high risk if thyroid V50 >24%.
+Zhou2020_Nstage_TV12p82_V50_ordinal,2.0,high-risk,Zhou et al. 2020,I(N-stage>1) + I(Volume<=12.82cc) + I(V50>24%),Table S2 ordinal implementation from the published clinical-DVH risk factors.
+Peng2020_TV20_V30_60_80_ordinal,0.0,low-risk,Peng et al. 2020,if Volume>20cc: score 0; else if V30-60<=80%: score 1; else score 2,Peng2020 stratum: thyroid volume >20 cc.
+Peng2020_TV_le20_binary,0.0,low-risk,Peng et al. 2020,High risk = thyroid volume <=20 cc,Table S2 boundary sensitivity using thyroid volume alone.
+Peng2020_TVle20_V30_60gt80_binary,0.0,low-risk,Peng et al. 2020,High risk = thyroid volume <=20 cc and V30-60 >80%,Table S2 highest-risk boundary sensitivity.

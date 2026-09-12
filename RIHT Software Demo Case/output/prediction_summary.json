@@ -1,0 +1,46 @@
+{
+  "case_dir": "F:\\RIHT Software Demostration Case_PUBLIC_UPLOAD_READY_2",
+  "ct_path": "F:\\RIHT Software Demostration Case_PUBLIC_UPLOAD_READY_2\\CT.mha",
+  "dose_path": "F:\\RIHT Software Demostration Case_PUBLIC_UPLOAD_READY_2\\RTdose.mha",
+  "thyroid_mask_path": "F:\\RIHT Software Demostration Case_PUBLIC_UPLOAD_READY_2\\Thyroid_mask.mha",
+  "thyroid_mask_source": "provided",
+  "target_mask_paths": [
+    "F:\\RIHT Software Demostration Case_PUBLIC_UPLOAD_READY_2\\PTV_70Gy_mask.mha"
+  ],
+  "model_id": "O3_EXTSMALL_0878_NOVOLUME",
+  "model_label": "R3 + D4 + C + Dmean only",
+  "age": 55.0,
+  "gender": "Unknown",
+  "n_stage": 2.0,
+  "auto_segmentation_used": false,
+  "input_image_format": {
+    "ct": "mha",
+    "dose": "mha",
+    "thyroid_mask": "mha"
+  },
+  "ct_window_level": 50.0,
+  "ct_window_width": 400.0,
+  "hotspot_threshold_gy": 40.0,
+  "hotspot_threshold_cgy": 4000.0,
+  "dose_scale_to_cgy": 1.0,
+  "linear_predictor": -0.9643130125965234,
+  "partial_hazard": 0.38124502032191826,
+  "phenotype": "persistent_low",
+  "risk_group": "low-risk",
+  "risk_1y": 0.012100821483117197,
+  "risk_3y": 0.06974387367004331,
+  "risk_7y": 0.29499065311369943,
+  "risk_all": 0.44087276985854273,
+  "optimizable_class": "limited_optimizable_near_target",
+  "target_available": true,
+  "outputs": {
+    "patient_features": "patient_features.csv",
+    "dvh_metrics": "dvh_metrics.csv",
+    "other_model_reproduction": "other_model_reproduction.csv",
+    "risk_curve": "risk_curve.csv",
+    "target_adjacency_metrics": "target_adjacency_metrics.csv",
+    "dose_optimization_audit": "dose_optimization_audit.csv",
+    "thyroid_zoom": "thyroid_zoom.png",
+    "html_report": "RIHT_demo_report.html"
+  }
+}

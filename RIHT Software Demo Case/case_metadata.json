@@ -1,0 +1,37 @@
+{
+  "case_id": "deidentified_demo_case_002",
+  "clinical_inputs": {
+    "age_years": 55,
+    "gender": "Unknown",
+    "n_stage": 2,
+    "note": "Synthetic demonstration values; not the source patient's attributes."
+  },
+  "verification": {
+    "thyroid_volume_cc": 20.01511558754544,
+    "thyroid_dmean_gy": 59.5777197265625,
+    "dose_unit": "cGy in RTdose.mha"
+  },
+  "deidentification": {
+    "direct_identifiers": "No direct identifiers are included in the output filenames or metadata.",
+    "metadata": "All image metadata fields were removed on rewrite.",
+    "geometry": "The original physical origin was replaced with (0, 0, 0).",
+    "anatomical_reduction": "Only a thyroid-centred lower-neck ROI was retained; the face and remaining head-and-neck anatomy were excluded by cropping.",
+    "crop_margin_mm_xyz": [
+      35.0,
+      35.0,
+      36.0
+    ],
+    "output_size_xyz": [
+      127,
+      93,
+      41
+    ]
+  },
+  "thyroid_mask": "Original study contour, provided for research software demonstration.",
+  "retained_target_masks": [
+    {
+      "file": "PTV_70Gy_mask.mha",
+      "foreground_voxels": 11319
+    }
+  ]
+}
